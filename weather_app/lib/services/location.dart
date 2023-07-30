@@ -16,3 +16,9 @@ class Location {
     }
   }
 }
+
+/*
+  double temperature = weatherData['main']['temp'];
+  int condition = weatherData['weather'][0]['id'];
+  String cityName = weatherData['name'];
+*/
