@@ -24,8 +24,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await location.getCurrentLocation();
 
     Uri url = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
-      'lat': location.latitude,
-      'lon': location.longitude,
+      'lat': location.latitude.toString(),
+      'lon': location.longitude.toString(),
       'APPID': kApiKey,
       'units': 'metric'
     });
