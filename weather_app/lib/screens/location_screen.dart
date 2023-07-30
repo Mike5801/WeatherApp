@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../utilities/constants.dart';
 
-class CityScreen extends StatefulWidget {
-  const CityScreen({super.key});
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
 
   @override
-  State<CityScreen> createState() => _CityScreenState();
+  State<LocationScreen> createState() => _LocationScreenState();
 }
 
-class _CityScreenState extends State<CityScreen> {
+class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
