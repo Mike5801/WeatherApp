@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/screens/city_screen.dart';
 import '../utilities/constants.dart';
 import '../services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({this.locationWeather, super.key});
-  
+
   final dynamic locationWeather;
 
   @override
@@ -25,9 +26,7 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherData) {
-
     setState(() {
-
       if (weatherData == null) {
         temperature = 0;
         weatherIcon = 'Error';
@@ -38,16 +37,16 @@ class _LocationScreenState extends State<LocationScreen> {
 
       double temp = weatherData['main']['temp'];
       temperature = temp.toInt();
-      
+
       int condition = weatherData['weather'][0]['id'];
       weatherIcon = weatherModel.getWeatherIcon(condition);
-      
+
       weatherMessage = weatherModel.getMessage(temperature);
 
       cityName = weatherData['name'];
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +79,17 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var typedName = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CityScreen(),
+                        ),
+                      );
+                      if (typedName != null) {
+                        print(typedName);
+                      }
+                    },
                     child: const Icon(
                       Icons.location_city,
                       size: 50.0,
