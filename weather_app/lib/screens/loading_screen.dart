@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/screens/location_screen.dart';
 import 'package:weather_app/services/networking.dart';
 import '../services/location.dart';
 import '../utilities/constants.dart';
@@ -12,9 +13,6 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  double latitude = 0;
-  double longitude = 0;
-
   @override
   void initState() {
     super.initState();
@@ -25,20 +23,25 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Location location = Location();
     await location.getCurrentLocation();
 
-    latitude = location.latitude;
-    longitude = location.longitude;
-
     Uri url = Uri.https('api.openweathermap.org', '/data/2.5/weather', {
-      'lat': latitude.toString(),
-      'lon': longitude.toString(),
-      'APPID': kApiKey
+      'lat': location.latitude,
+      'lon': location.longitude,
+      'APPID': kApiKey,
+      'units': 'metric'
     });
 
     NetworkHelper networkHelper = NetworkHelper(url: url);
 
     var weatherData = await networkHelper.getData();
 
-    if (context.mounted) Navigator.pushNamed(context, '/location');
+    if (context.mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LocationScreen(locationWeather: weatherData),
+        ),
+      );
+    }
   }
 
   @override

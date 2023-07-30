@@ -10,7 +10,7 @@ class NetworkHelper {
     try {
       http.Response response = await http.get(url);
 
-      String decodedData = jsonDecode(response.body);
+      var decodedData = jsonDecode(response.body);
 
       return decodedData;
     } catch (e) {

@@ -15,10 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: const LoadingScreen(),
-      routes: {
-        '/location': (context) => const LocationScreen(),
-        '/city': (context) => const CityScreen(),
-      },
     );
   }
 }
