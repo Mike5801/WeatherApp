@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:weather_app/services/networking.dart';
 import '../services/location.dart';
-import 'package:http/http.dart' as http;
 import '../utilities/constants.dart';
 
 class LoadingScreen extends StatefulWidget {

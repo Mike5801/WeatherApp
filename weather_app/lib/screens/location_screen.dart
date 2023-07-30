@@ -13,35 +13,60 @@ class _CityScreenState extends State<CityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: const AssetImage('images/location_background.jpg'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.8), BlendMode.dstATop),
           ),
         ),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.near_me,
+                      size: 50.0,
+                    ),
                   ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.location_city,
+                      size: 50.0,
+                    ),
+                  ),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      '32°',
+                      style: kTempTextStyle,
+                    ),
+                    Text(
+                      '☀️',
+                      style: kConditionTextStyle,
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: null,
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+              const Padding(
+                padding: EdgeInsets.only(right: 15.0),
+                child: Text(
+                  "It's 🍦 time in San Francisco!",
+                  textAlign: TextAlign.right,
+                  style: kMessageTextStyle,
                 ),
               ),
             ],
@@ -51,3 +76,9 @@ class _CityScreenState extends State<CityScreen> {
     );
   }
 }
+
+/*
+  double temperature = weatherData['main']['temp'];
+  int condition = weatherData['weather'][0]['id'];
+  String cityName = weatherData['name'];
+*/
