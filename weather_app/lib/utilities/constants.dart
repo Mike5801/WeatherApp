@@ -19,8 +19,6 @@ const kConditionTextStyle = TextStyle(
   fontSize: 100.0,
 );
 
-const kApiKey = 'a24f8526ed875a52dc3e866f62f49a08';
-
 const kTextFieldDecoration = InputDecoration(
   filled: true,
   fillColor: Colors.white,

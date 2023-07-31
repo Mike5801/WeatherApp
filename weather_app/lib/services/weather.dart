@@ -1,7 +1,7 @@
 import 'package:weather_app/services/networking.dart';
 
 import '../services/location.dart';
-import '../utilities/constants.dart';
+import '../utilities/keys.dart';
 
 const String baseURL = 'api.openweathermap.org';
 const String baseUrlParams = '/data/2.5/weather';
